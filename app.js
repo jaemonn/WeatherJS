@@ -27,11 +27,31 @@ document.addEventListener('DOMContentLoaded', getWeather);
 
 // });
 
+// Change location using enter
+document.getElementById('w-form').addEventListener('submit', (e) => {
+    const location = document.getElementById('location').value;
+
+     // Change location
+     weather.changeLocation(location);
+
+     // Set location in LS
+     storage.setLocationData(location);
+ 
+     //Get and display weather
+     getWeather();
+ 
+     // Close modal
+     $('#locModal').modal('hide');
+
+     // Clear search input
+     ui.clear();
+ 
+     e.preventDefault();
+});
 
 // Change Location
 document.getElementById('w-change-btn').addEventListener('click', (e) => {
     const location = document.getElementById('location').value;
-    const locModal = document.getElementById('locModal');
 
     // Change location
     weather.changeLocation(location);
